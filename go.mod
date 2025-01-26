@@ -1,4 +1,4 @@
-module protos
+module github.com/MikeThesol/proto
 
 go 1.23.5
 
