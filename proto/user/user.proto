@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "/gen/user;user";
+
+service User {
+  rpc GetUserByEmail(GetUserByEmailRequest) returns (GetUserByEmailResponse);
+  rpc GetUserByID(GetUserByIDRequest) returns (GetUserByIDResponse);
+}
+
+message GetUserByEmailRequest {
+  string email = 1;
+}
+
+message GetUserByEmailResponse {
+  int64 id = 1;
+  string name = 2;
+  string email = 3;
+  bool is_admin = 4;
+}
+
+message GetUserByIDRequest {
+  int64 id = 1;
+}
+
+message GetUserByIDResponse {
+  string name = 1;
+  string email = 2;
+  bool is_admin = 3;
+}
