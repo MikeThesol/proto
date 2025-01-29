@@ -7,6 +7,7 @@ option go_package = "/gen/user;user";
 service User {
   rpc GetUserByEmail(GetUserByEmailRequest) returns (GetUserByEmailResponse);
   rpc GetUserByID(GetUserByIDRequest) returns (GetUserByIDResponse);
+  rpc Register(RegisterRequest) returns (RegisterResponse); // Новый метод
 }
 
 message GetUserByEmailRequest {
@@ -17,7 +18,8 @@ message GetUserByEmailResponse {
   int64 id = 1;
   string name = 2;
   string email = 3;
-  bool is_admin = 4;
+  string pass_hash = 4; // Добавлено поле для хэша пароля
+  bool is_admin = 5;
 }
 
 message GetUserByIDRequest {
@@ -28,4 +30,14 @@ message GetUserByIDResponse {
   string name = 1;
   string email = 2;
   bool is_admin = 3;
+}
+
+message RegisterRequest {
+  string name = 1;
+  string email = 2;
+  string pass_hash = 3; // Хэш пароля
+}
+
+message RegisterResponse {
+  int64 id = 1; // ID нового пользователя
 }
